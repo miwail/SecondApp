@@ -1,0 +1,23 @@
+
+  <h1>Create new account</h1>
+  <%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger role="alert">
+      <% @user.errors.full_messages.each do |msg|%>
+        <h4 class="alert-heading">Erros:</h4>
+        <ul>
+          <li><%=msg%></li>
+      <%end%>
+        </ul>
+    </div>
+  <%end%>
+        <p><%= f.label :username %></p>
+        <p><%= f.text_field :username %></p>
+        <p><%= f.label :email %></p>
+        <p><%= f.email_field :email%></p>
+        <p><%= f.label :password %></p>
+        <p><%= f.password_field :password %></p>
+        <p><%= f.label :password_confirmation %></p>
+        <p><%= f.password_field :password_confirmation %></p>
+        <p><strong><%= f.submit "Sign up", class: :"btn btn-info form-control" %></strong></p>
+    <%end%>

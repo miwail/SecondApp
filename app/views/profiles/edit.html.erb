@@ -1,0 +1,20 @@
+<table class="table table-bordered table-dark ">
+  <tr>
+    <td>
+      <%=form_for(@profile, url: profile_path(current_user.profile)) do |f|%>
+        <p><%=f.label :name %></p>
+        <p><%=f.text_field :name%></p>
+        <p><%=f.label :second_name%></p>
+        <p><%=f.text_field :second_name%></p>
+        <p><%=f.label :sex%></p>
+        <p><%=f.text_field :sex%></p>
+        <p><%=f.label :birthday%></p>
+        <p><%=f.date_field :birthday%></p>
+        <p><%=f.label :about %></p>
+        <p><%=f.text_field :about %></p>
+
+        <p><%=f.submit "Update profile", :class => "btn btn-dark"%></p>
+      <%end%>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,19 @@
+<%if @users.empty?%>
+  <span class="text-warning">There`s no users yet...</span>
+<%else%>
+  <table class="table table-bordered table-dark">
+    <thead>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Created at</th>
+    </thead>
+    <tbody>
+      <%@users.each do |t|%>
+        <tr>
+          <td><strong><%=t.username%></strong></td>
+          <td><%=t.email%></td>
+          <td><%=t.created_at%></td>
+        </tr>
+      <%end%>
+    </tbody>
+<%end%>

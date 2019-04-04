@@ -1,0 +1,16 @@
+<table class="table table-bordered table-dark">
+  <tr>
+    <td>
+      <%=form_for(@task, url: user_task_path) do |f| %>
+        <p><%= f.label :title %></p>
+        <p><%= f.text_field :title %></p>
+        <p><%= f.label :description %></p>
+        <p><%= f.text_field :description %></p>
+        <p><%= f.label :Complated? %></p>
+        <p><%= f.radio_button:complated, "Complated?", :checked => false%></p>
+        <hr>
+        <p align="center"><%= f.submit "Update task", :class => "btn btn-dark" %></p>
+      <%end%>
+    </td>
+  </tr>
+</table>

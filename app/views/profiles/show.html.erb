@@ -1,0 +1,32 @@
+<table class="table table-bordered table-dark" style="width:70%;" align="center">
+  <tr>
+    <th>Name</th>
+    <td><%=@profile.name %></td>
+  </tr>
+  <tr>
+    <th>Second name</th>
+    <td><%=@profile.second_name %></td>
+  </tr>
+  <tr>
+    <th>Sex</th>
+    <td><%=@profile.sex %></td>
+  </tr>
+  <tr>
+    <th>Birthday</th>
+    <td><%=@profile.birthday %></td>
+  </tr>
+  <tr>
+    <th>Country</th>
+    <td><%=@profile.country %></td>
+  </tr>
+  <tr>
+    <th>About</th>
+    <td><%=@profile.about %></td>
+  </tr>
+
+</table>
+<div style="text-align: center;"
+  <span>
+    <%=link_to "edit", edit_profile_path(current_user.profile), :class => "btn btn-dark" %>
+  </span>
+</div>

@@ -1,0 +1,36 @@
+  <%if @tasks.empty?%>
+    <span class="text-warning">There`s no tasks yet...</span>
+  <%else%>
+    <% @tasks.each do |task| %>
+    <table class="table table-bordered table-dark">
+      <tr>
+        <td><%=link_to task.user.username, user_path(task.user.id)%></td>
+        <td align = "right">Created: <%=task.created_at.strftime("%Y-%m-%d, %H:%m")%></td>
+        <td><%=link_to "Edit", edit_user_task_path(task.user, task.id)%></td>
+        <td><%=link_to "Delete", user_task_path(task.user, task.id), method: :delete, data: {confirm: "Are you sure?"}%></td>
+      </tr>
+      <tr>
+          <table class="table table-bordered table-dark">
+              <thead>
+                <th>Task</th>
+                <th>Details</th>
+                <th>Complated</th>
+              </thead>
+            <tbody>
+              <tr>
+                <td><%=task.title%></td>
+                <td><%=task.description%></td>
+                <td><%=task.complated%></td>
+              </tr>
+            </tbody>
+          </table>
+          <%if !(task.created_at == task.updated_at) %>
+            <i style="font-size:0.75em;">Last updated: <%=task.updated_at.strftime("%Y-%m-%d, %H:%m")%></i>
+          <%end%>
+      </tr>
+    </table>
+    <hr style="border: none; border-bottom: 1px solid grey;">
+    <%end%>
+  <%end%>
+  
+  

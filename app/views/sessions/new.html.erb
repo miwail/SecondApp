@@ -1,0 +1,10 @@
+  <h1>Sign In</h1>
+
+  <%= form_for(:session, url: login_path) do |f| %>
+    <p><%= f.label :email %></p>
+    <p><%= f.email_field :email%></p>
+    <p><%= f.label :password %></p>
+    <p><%= f.password_field :password %></p>
+
+    <p><strong><%= f.submit "Sign in", class: :"btn btn-info form-control" %></strong></p>
+  <%end%>

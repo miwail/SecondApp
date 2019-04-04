@@ -1,0 +1,15 @@
+<table class="table table-bordered table-dark">
+  <tr>
+    <td>
+      <%=form_for(@task, url: user_tasks_path) do |f|%>
+        <p><%=f.label :title%></p>
+        <p><%=f.text_field :title%></p>
+        <p><%=f.label :description%></p>
+        <p><%=f.text_field :description%></p>
+        <hr>
+        <p align="center"><%=f.submit "Add task", :class => "btn btn-dark"%></p>
+
+      <%end%>
+    </td>
+  </tr>
+</table>
