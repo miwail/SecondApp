@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+    before_action :find_user, only: [:show, :destroy]
+
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      log_in @user
+      session[:user_id] = @user.id
       flash[:notice] = "Your account successful created!"
       flash[:notice] = "Please, fill in your profile"
       redirect_to edit_profile_path(@user)
@@ -26,8 +27,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
+  end
+
+
+  def find_user
+    @user = User.find(params[:id])
   end
 
   private

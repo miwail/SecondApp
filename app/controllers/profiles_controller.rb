@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :get_profile, only: [:edit, :update, :show]
+
   def edit
   end
 
@@ -17,13 +18,14 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def get_profile
-   @profile = current_user.profile
-  end
-
   private
     def profile_params
-      params.require(:profile).permit(:name, :second_name, :sex, :birthday, :about, :country)
+      params.require(:profile).permit(:name, :second_name, :sex, :birthday,
+                                      :about, :country)
+    end
+
+    def get_profile
+      @profile = current_user.profile
     end
 
 end

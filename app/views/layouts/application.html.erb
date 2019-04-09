@@ -17,7 +17,7 @@
             <a class="navbar-brand"><%=link_to "Home", root_url%></a>
           </div>
 
-          <%if loged_in?%>
+          <%if current_user%>
             <a class="navbar-brand"><%=link_to "Profile", profile_path(current_user.profile) if current_user.profile %></a>
             <a class="navbar-brand"><%=link_to "My tasks", user_tasks_path(current_user)%></a>
             <a class="navbar-brand"><%=link_to "Add new task", new_user_task_path(current_user), method: :get%></a>
