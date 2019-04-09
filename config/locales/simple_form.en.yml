@@ -1,6 +1,0 @@
-en:
-  date:
-    formats:
-      default: "bla-bla %Y-%m-%d"
-      long: "bla bla%B %d, %Y"
-      short: "%b %d"
