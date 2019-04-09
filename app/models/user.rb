@@ -5,6 +5,13 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_one :profile, dependent: :destroy
 
+  validates :username, :email, :password,
+            :password_confirmation, presence: true
+  validates :email, :username, uniqueness: true
+  validates :password, confirmation: true
+
+
+  validates :username, length: {minimum: 3}
   def build_profile
     Profile.create(user: self)
   end

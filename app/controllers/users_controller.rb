@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Please, fill in your profile"
       redirect_to edit_profile_path(@user)
     else
-      flash.now[:warning] = "Oops, thy again"
+      flash.now[:alert] = @user.errors.full_messages
       render "new"
     end
   end

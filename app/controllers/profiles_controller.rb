@@ -9,13 +9,13 @@ class ProfilesController < ApplicationController
       flash[:notice] = "Profile successfull updated!"
       redirect_to profile_path(current_user)
     else
-      flash.now[:alert] = "Oops,something going wrong!"
+      flash.now[:alert] = @profile.errors.full_messages
       render "edit"
     end
   end
 
   def show
-    @user = User.find(params[:id])
+
   end
 
   private

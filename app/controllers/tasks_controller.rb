@@ -19,7 +19,7 @@ class TasksController < ApplicationController
       flash[:notice] = 'Task successfull add'
       redirect_to user_tasks_path
     else
-      flash.now[:alert] = 'Oops, something going wrong'
+      flash.now[:alert] = @task.errors.full_messages
       render "new"
     end
   end
