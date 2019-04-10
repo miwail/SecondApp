@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
-  before_action :find_task, only: [:show, :update, :edit, :destroy ]
-  before_action :check_user?, only: [:update, :destroy]
+  before_action :find_task, only: %i[show update edit destroy]
+  before_action :check_user?, only: %i[update destroy]
 
   def index
     @tasks = current_user.tasks.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @task = Task.new
@@ -20,7 +21,7 @@ class TasksController < ApplicationController
       redirect_to user_tasks_path
     else
       flash.now[:alert] = @task.errors.full_messages
-      render "new"
+      render 'new'
     end
   end
 
@@ -30,21 +31,22 @@ class TasksController < ApplicationController
       redirect_to root_url
     else
       flash.now[:alert] = 'Oops, something going wrong'
-      render "edit"
+      render 'edit'
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
     @task.destroy
-    flash[:notice] = 'Tasks successfull deleted'
+    flash[:notice] = 'Task successfull deleted'
     redirect_to root_url
   end
 
+  private
+
   def check_user?
-    unless @task.user == current_user
+    unless @task.user != current_user
       flash[:alert] = 'You dont have permission to do this!!'
       redirect_to root_url
     end
@@ -54,8 +56,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
-  private
-    def task_params
-      params.require(:task).permit(:title, :description, :complated)
-    end
+  def task_params
+    params.require(:task).permit(:title, :description, :complated)
+  end
 end

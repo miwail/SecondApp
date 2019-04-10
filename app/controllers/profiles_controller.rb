@@ -1,31 +1,30 @@
-class ProfilesController < ApplicationController
-  before_action :get_profile, only: [:edit, :update, :show]
+# frozen_string_literal: true
 
-  def edit
-  end
+class ProfilesController < ApplicationController
+  before_action :get_profile, only: %i[edit update show]
+
+  def edit; end
 
   def update
     if @profile.update(profile_params)
-      flash[:notice] = "Profile successfull updated!"
+      flash[:notice] = 'Profile successfull updated!'
       redirect_to profile_path(current_user)
     else
       flash.now[:alert] = @profile.errors.full_messages
-      render "edit"
+      render 'edit'
     end
   end
 
-  def show
-
-  end
+  def show; end
 
   private
-    def profile_params
-      params.require(:profile).permit(:name, :second_name, :sex, :birthday,
-                                      :about, :country)
-    end
 
-    def get_profile
-      @profile = current_user.profile
-    end
+  def profile_params
+    params.require(:profile).permit(:name, :second_name, :sex,
+                                    :birthday, :about, :country)
+  end
 
+  def get_profile
+    @profile = current_user.profile
+  end
 end

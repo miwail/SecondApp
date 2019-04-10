@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   after_create :build_profile
 
@@ -10,8 +12,7 @@ class User < ApplicationRecord
   validates :email, :username, uniqueness: true
   validates :password, confirmation: true
 
-
-  validates :username, length: {minimum: 3}
+  validates :username, length: { minimum: 3 }
   def build_profile
     Profile.create(user: self)
   end

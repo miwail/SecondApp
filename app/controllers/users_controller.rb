@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-    before_action :find_user, only: [:show, :destroy]
+  include UserLogin
+  before_action :find_user, only: %i[show destroy]
 
   def index
     @users = User.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @user = User.new
@@ -16,13 +18,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
-      flash[:notice] = "Your account successful created!"
-      flash[:notice] = "Please, fill in your profile"
+      log_in(@user)
+      flash[:notice] = 'Your account successful created!'
+      flash[:notice] = 'Please, fill in your profile'
       redirect_to edit_profile_path(@user)
     else
       flash.now[:alert] = @user.errors.full_messages
-      render "new"
+      render 'new'
     end
   end
 
@@ -30,13 +32,13 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-private
-    def find_user
-      @user = User.find(params[:id])
-    end
+  private
 
+  def find_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
 end
