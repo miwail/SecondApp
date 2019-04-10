@@ -13,4 +13,10 @@ Rails.application.routes.draw do
   get 'signup'     => 'users#new'
 
   root to: 'home_page#home'
+
+
+
+  # Routes for Google authentication
+  get 'auth/:provider/callback', to: 'sessions#googleAuth'
+  get 'auth/failure', to: redirect('/')
 end

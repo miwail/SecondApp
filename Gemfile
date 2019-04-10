@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-
+gem 'omniauth-google-oauth2'
 gem 'rubocop', '~>0.67.2', require: false
 
 gem 'simple_form'

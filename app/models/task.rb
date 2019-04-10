@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
-  msg = ' name must be in range between 3 and 20 characters'!
+  msg = ' name must be in range between 3 and 20 characters'
   belongs_to :user
   validates :user, presence: true
   validates :title, :description, presence: true
