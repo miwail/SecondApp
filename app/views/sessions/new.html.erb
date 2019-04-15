@@ -6,5 +6,6 @@
     <p><%= f.label :password %></p>
     <p><%= f.password_field :password %></p>
 
-    <p><strong><%= f.submit "Sign in", :class => 'btn btn-light' %></strong></p>
+    <p><strong><%= f.submit "Sign in", :class => 'btn btn-dark' %></strong></p>
+    <p><strong><%= link_to 'Or, Sign in with google', '/auth/google_oauth2'%></strong></p>
   <%end%>

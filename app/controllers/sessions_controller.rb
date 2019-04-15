@@ -2,6 +2,7 @@
 
 class SessionsController < ApplicationController
   include UserLogin
+
   def create
     user = User.find_by(email: params.dig(:session, :email))
     if user&.authenticate(params.dig(:session, :password))
@@ -24,9 +25,8 @@ class SessionsController < ApplicationController
     user = User.from_omniauth(request.env["omniauth.auth"])
 
     log_in(user)
-    flash[:notice] = 'Welcome ' + user.username
+    puts user.errors.full_messages
     redirect_to root_path
   end
-
 
 end
